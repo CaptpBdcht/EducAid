@@ -1,0 +1,24 @@
+<div class="ui-grid-col-12" style="text-align:center; font-size:x-large; font-weight:600;">
+    {{ className }}
+</div>
+<br /><br />
+<p-pickList [source]="sourceStudents" [target]="targetStudents"
+        sourceHeader="Disponible" targetHeader="Sélection" [responsive]="true" filterBy="brand" 
+        dragdrop="true" filterBy="lastname" sourceFilterPlaceholder="Recherche par nom"
+        targetFilterPlaceholder="Recherche par nom"
+        [sourceStyle]="{'height':'300px'}" [targetStyle]="{'height':'300px'}">
+    <ng-template let-student pTemplate="item">
+        <div class="ui-helper-clearfix">
+            <div style="font-size:14px;float:right;margin:5px 10px 5px 0">
+              {{ student.firstname }} {{ student.lastname }} [ {{ student.username }} ]
+            </div>
+        </div>
+    </ng-template>
+</p-pickList>
+<br />
+<div class="ui-grid-col-12" style="text-align:center;">
+    <button pButton type="button" (click)="saveStudents()"
+            class="ui-button-success" style="padding: 0.5em 1em;"
+            label="Sauver en l'état">
+    </button>
+</div>

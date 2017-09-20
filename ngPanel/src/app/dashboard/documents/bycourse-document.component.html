@@ -1,0 +1,11 @@
+<div *ngIf="classes.length>0">
+  <p-tabView effect="fade" (onChange)="onTabChange($event)">
+    <p-tabPanel *ngFor="let class of classes" header={{formatClass(class)}} leftIcon="fa-graduation-cap">
+      <p-tree [value]="privateDocumentsTree" [style]="{'width':'70%'}" selectionMode="single" (onNodeSelect)="openDocument($event)" [(selection)]="selectedFile">
+      </p-tree>
+    </p-tabPanel>
+  </p-tabView>
+</div>
+<div *ngIf="classes.length===0">
+  <p-messages [closable]="false" [(value)]="warningmessage"></p-messages>
+</div>

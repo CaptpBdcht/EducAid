@@ -1,0 +1,57 @@
+<p-dataTable [value]="courses" selectionMode="single" [(selection)]="selectedCourse"
+             (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15"
+             [responsive]="true">
+    <p-header>Gestion des Cours</p-header>
+    <p-column field="userFirstname" header="Prénom" [sortable]="true"
+              [filter]="true" filterMatchMode="contains"></p-column>
+    <p-column field="userLastname" header="Nom" [sortable]="true"
+              [filter]="true" filterMatchMode="contains"></p-column>
+    <p-column field="subjectName" header="Sujet" [sortable]="true"
+              [filter]="true" filterMatchMode="contains"></p-column>
+    <p-column field="levelName" header="Niveau" [sortable]="true"
+              [filter]="true" filterMatchMode="contains"></p-column>
+    <p-column field="specialtyName" header="Spécialité" [sortable]="true"
+              [filter]="true" filterMatchMode="contains"></p-column>
+    <p-column field="year" header="Année" [sortable]="true"
+              [filter]="true" filterMatchMode="contains"></p-column>
+    <p-footer>
+        <div class="ui-helper-clearfix" style="width:100%">
+            <button type="button" pButton icon="fa-plus" style="width:50%;"
+                    (click)="showAddCourseDialog()"></button>
+        </div>
+    </p-footer>
+</p-dataTable>
+
+<p-dialog header="Détails du Cours" [(visible)]="displayDialog" [responsive]="true"
+          showEffect="fade" [modal]="true" appendTo="body">
+    <div class="ui-grid ui-grid-responsive ui-fluid" style="width:40vw; height:30vh" *ngIf="course">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+                <label for="subjectName" class="label-baseline-middle">Sujet</label>
+            </div>
+            <div class="ui-grid-col-8">
+                <p-dropdown [options]="subjects" [(ngModel)]="course.subjectId" placeholder="Sélection sujet"></p-dropdown>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="teacher" class="label-baseline-middle">Enseignant</label></div>
+            <div class="ui-grid-col-8">
+                <p-dropdown [options]="teachers" [(ngModel)]="course.teacherId" placeholder="Sélection enseignant"></p-dropdown>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="class" class="label-baseline-middle">Classe</label></div>
+            <div class="ui-grid-col-8">
+                <p-dropdown [options]="classes" [(ngModel)]="course.classId" placeholder="Sélection classe"></p-dropdown>
+            </div>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-trash" class="crud-dialog-delete"
+                    (click)="delete()" *ngIf="!newCourse"></button>
+            <button type="button" pButton icon="fa-check" class="crud-dialog-save"
+                    (click)="save()"></button>
+        </div>
+    </p-footer>
+</p-dialog>

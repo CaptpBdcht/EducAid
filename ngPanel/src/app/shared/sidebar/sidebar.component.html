@@ -1,0 +1,128 @@
+<div class="sidebar-wrapper">
+  <div class="logo">
+    <a class="simple-text" style="text-align:center;">
+      <!--<div class="logo-img">
+        <img src="/assets/img/favicon-32x32.png"/>
+      </div>-->
+      Educ Aid
+    </a>
+  </div>
+  <ul class="nav">
+    <!-- Begin Documents -->
+    <li class="sidebar-li-margin">
+      <a (click)="sideNavClickSingle('Documents')">Documents</a>
+      <ul class="sidebar-ul-pretty" *ngIf="singleClicked === 'Documents'">
+        <li class="sidebar-li-margin">
+          <a [routerLink]="['/dashboard/documents/free']">
+            <p>Libres</p>
+          </a>
+        </li>
+        <li class="sidebar-li-margin">
+          <a [routerLink]="['/dashboard/documents/bycourse']">
+            <p>Par cours</p>
+          </a>
+        </li>
+        <li *ngIf="isTeacherVisible" class="sidebar-li-margin">
+          <a [routerLink]="['/dashboard/documents/upload']">
+            <p>Mise en ligne</p>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- Begin Student -->
+    <li class="sidebar-li-margin" *ngIf="isStudentVisible">
+      <a (click)="sideNavClickSingle('Student')">Mes Cours</a>
+      <ul class="sidebar-ul-pretty" *ngIf="singleClicked === 'Student'">
+        <li class="sidebar-li-margin">
+          <a [routerLink]="['/dashboard/student/mycourses']">
+            <p>Mes Exercices</p>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- Begin Makers -->
+    <li class="sidebar-li-margin" *ngIf="isAdminVisible || isTeacherVisible">
+      <a (click)="sideNavClickSingle('Makers')">Création Exercices</a>
+      <ul class="sidebar-ul-pretty" *ngIf="singleClicked === 'Makers'">
+        <li class="sidebar-li-margin">
+          <a [routerLink]="['/dashboard/makers/qcmmaker']">
+            <p>Créer un QCM</p>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- Begin Teacher -->
+    <li class="sidebar-li-margin" *ngIf="isAdminVisible || isTeacherVisible">
+      <a (click)="sideNavClickSingle('Teacher')">Zone Enseignement</a>
+      <ul class="sidebar-ul-pretty" *ngIf="singleClicked === 'Teacher'">
+        <li class="sidebar-li-margin">
+          <a [routerLink]="['/dashboard/teacher/myclasses']">
+            <p>Mes Classes</p>
+          </a>
+        </li>
+        <li class="sidebar-li-margin">
+          <a [routerLink]="['/dashboard/teacher/mycourses']">
+            <p>Mes Cours</p>
+          </a>
+        </li>
+        <li class="sidebar-li-margin">
+          <a [routerLink]="['/dashboard/teacher/classes']">
+            <p>Toutes les Classes</p>
+          </a>
+        </li>
+        <li class="sidebar-li-margin">
+          <a [routerLink]="['/dashboard/teacher/courses']">
+            <p>Tous les Cours</p>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- Begin Admin -->
+    <li class="sidebar-li-margin" *ngIf="isAdminVisible">
+      <a (click)="sideNavClickSingle('Admin')">Administration</a>
+      <ul class="sidebar-ul-pretty" *ngIf="singleClicked === 'Admin'">
+        <li class="sidebar-li-margin">
+          <a [routerLink]="['/dashboard/admin/users']">
+            <p>Utilisateurs</p>
+          </a>
+        </li>
+        <li class="sidebar-li-margin">
+          <a [routerLink]="['/dashboard/admin/levelspec']">
+            <p>Niveaux &amp; Spécialités</p>
+          </a>
+        </li>
+        <li class="sidebar-li-margin">
+          <a [routerLink]="['/dashboard/admin/level-has-spec']">
+            <p>Assoc.  Niveau-Spécialité</p>
+          </a>
+        </li>
+        <li class="sidebar-li-margin">
+          <a [routerLink]="['/dashboard/admin/subjects']">
+            <p>Sujets</p>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- Begin Help -->
+    <li class="sidebar-li-margin" *ngIf="isTeacherVisible || isStudentVisible">
+      <a (click)="sideNavClickSingle('Help')">Zone Entraide</a>
+      <ul class="sidebar-ul-pretty" *ngIf="singleClicked === 'Help'">
+        <li class="sidebar-li-margin">
+          <a [routerLink]="['/dashboard/helping/demands']">
+            <p>Demandes actives</p>
+          </a>
+        </li>
+        <li class="sidebar-li-margin">
+          <a [routerLink]="['/dashboard/helping/given']">
+            <p>Ma contribution</p>
+          </a>
+        </li>
+        <li class="sidebar-li-margin" *ngIf="isStudentVisible">
+          <a [routerLink]="['/dashboard/helping/evaluate']">
+            <p>Aide à évaluer</p>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

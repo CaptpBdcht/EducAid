@@ -1,0 +1,55 @@
+<div class="ui-grid-col-5">
+    <p-dataTable [value]="studentCourses" [paginator]="true" rows="20" sortField="className"
+            rowGroupMode="subheader" groupField="className" 
+            expandableRowGroups="true" [sortableRowGroup]="false">
+        <p-header>
+            Mes cours
+        </p-header>
+
+        <ng-template pTemplate="rowgroupheader" let-rowData>
+            {{ rowData['className'] || rowData['classLvl'] }}
+        </ng-template>
+        <p-column field="subject" header="Sujet"> </p-column>
+        <p-column header="Exercices" [style]="{'width':'25%'}">
+            <ng-template let-course="rowData" pTemplate="body">
+                <button type="button" pButton (click)="selectCourse(course)" icon="fa-arrows-h" 
+                        class="btn-list-search"></button>
+            </ng-template>
+        </p-column>
+        <p-column header="Evolution" [style]="{'width':'25%'}">
+            <ng-template let-course="rowData" pTemplate="body">
+                <button type="button" pButton (click)="selectEvolution(course)" icon="fa-line-chart" 
+                        class="btn-list-search"></button>
+            </ng-template>
+        </p-column>
+    </p-dataTable> 
+</div>
+<div class="ui-grid-col-1">&nbsp;</div>
+<div class="ui-grid-col-6">
+    <div *ngIf="selectedCourse">
+        <p-dataTable [value]="courseExercices" [paginator]="true" rows="20"
+                sortField="name" rowGroupMode="subheader">
+            <p-header>
+                {{ selectedCourse.subject }}
+            </p-header>
+
+            <p-column field="name" header="Sujet"></p-column>
+            <p-column header="1er Essai" [style]="{'width':'20%'}">
+                <ng-template let-exercice="rowData" pTemplate="body">
+                    {{ getFormattedMark(exercice) }}
+                </ng-template>
+            </p-column>
+            <p-column header="Dernier Essai" [style]="{'width':'20%'}">
+                <ng-template let-exercice="rowData" pTemplate="body">
+                    {{ getFormattedLastMark(exercice) }}
+                </ng-template>
+            </p-column>
+            <p-column header="Go !" [style]="{'width':'15%'}">
+                <ng-template let-exercice="rowData" pTemplate="body">
+                    <button type="button" pButton (click)="selectExercice(exercice)"
+                            icon="fa-arrows-h" class="btn-list-search"></button>
+                </ng-template>
+            </p-column>
+        </p-dataTable>
+    </div>
+</div>

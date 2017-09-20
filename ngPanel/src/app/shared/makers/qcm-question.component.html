@@ -1,0 +1,3 @@
+<p-panel [header]="header" [toggleable]="true" [style]="{'margin-bottom':'20px'}">
+  <p-selectButton [options]="items" [(ngModel)]="selectedItem" (onChange)="changeVal($event)"></p-selectButton>
+</p-panel>

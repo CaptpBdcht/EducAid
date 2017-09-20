@@ -1,0 +1,121 @@
+// Rules list can be found at
+// https://palantir.github.io/tslint/rules/
+{
+  // Angular rules are in codelyzer
+  "rulesDirectory": [
+    "node_modules/codelyzer"
+  ],
+  "rules": {
+    // TypeScript specific
+    "adjacent-overload-signatures": true,
+    "member-access": false,
+    "no-empty-interface": true,
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      }
+    ],
+    "unified-signatures": true,
+
+    // Functionality
+    "import-blacklist": [
+      true,
+      "rxjs"
+    ],
+    "label-position": true,
+    "no-construct": true,
+    "no-debugger": true,
+    "no-duplicate-variable": true,
+    "no-eval": true,
+    "no-invalid-this": true,
+    "no-shadowed-variable": true,
+    "no-switch-case-fall-through": true,
+    "no-unused-expression": true,
+    "no-unused-new": true,
+    "no-use-before-declare": true,
+    "no-var-keyword": true,
+    "radix": true,
+    "switch-default": true,
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
+    "typeof-compare": true,
+    "use-isnan": true,
+    
+    // Maintainability
+    "eofline": true,
+    "indent": [
+      true,
+      "spaces"
+    ],                 
+    "max-classes-per-file": [ true, 7 ],
+    "max-file-line-count": [ true, 400 ],
+    "max-line-length": [ true, 120 ],
+    "prefer-const": true,         
+    "trailing-comma": [
+      true,
+      {                
+        "multiline": "never",
+        "singleline": "never"
+      }
+    ],
+
+    // Style
+    "callable-types": true,
+    "class-name": true,
+    "comment-format": [
+      true,
+      "check-space"
+    ],
+    "interface-name": [ false ],
+    "object-literal-key-quotes": [
+      true,
+      "consistent"
+    ],
+    "quotemark": [
+      true,
+      "single",
+      "avoid-escape"
+    ],
+    "semicolon": [
+      true,
+      "always"
+    ],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore",
+      "allow-pascal-case"
+    ],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-module",
+      "check-type"
+    ],
+
+    // Angular
+    "directive-selector": [ true, "attribute", "educaid", "camelCase" ],
+    "component-selector": [ true, "element", "educaid", "kebab-case" ],
+    "use-input-property-decorator": true,
+    "use-output-property-decorator": true,
+    "use-host-property-decorator": true,
+    "no-input-rename": true,
+    "no-output-rename": true,
+    "use-life-cycle-interface": true,
+    "use-pipe-transform-interface": true,
+    "component-class-suffix": true,
+    "directive-class-suffix": true,
+    /* "no-access-missing-member": true, // see issue https://github.com/mgechev/codelyzer/issues/191 */
+    "templates-use-public": true,
+    "invoke-injectable": true
+  }
+}

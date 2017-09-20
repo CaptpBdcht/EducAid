@@ -1,0 +1,38 @@
+image: node:7
+
+stages:
+  - test
+  - build
+  - production
+
+before_script:
+  - npm install
+  - npm install -g @angular/cli
+
+tslint:
+  stage: test
+  script:
+    - ng lint
+
+karma:
+  stage: test
+  script:
+    - ng test --browsers PhantomJS --single-run
+
+test_build:
+  stage: build
+  script:
+    - ng build
+  only:
+    - dev
+
+aot_prod:
+  stage: production
+  script:
+    - ng build --aot --prod
+    - mv dist public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master

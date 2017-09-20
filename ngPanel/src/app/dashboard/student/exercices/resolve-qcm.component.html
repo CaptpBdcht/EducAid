@@ -1,0 +1,12 @@
+<p-messages [(value)]="resolveMsgs"></p-messages>
+<h3>{{ qcmTitle }}</h3>
+<br />
+<span *ngFor="let quest of questions">
+    <educaid-qcm-question [question]="quest" (changeEmitter)="answerUpdate($event)"></educaid-qcm-question>
+</span>
+<button type="button" (click)="askForHelp()"
+        pButton icon="fa-question-circle" label="Demander de l'aide !"></button>
+<p-growl [value]="msgs"></p-growl>
+<p-confirmDialog appendTo="body"></p-confirmDialog>
+<button type="button" (click)="confirmValidation()" style="float:right;"
+        pButton icon="fa-check" label="Valider mes réponses"></button>

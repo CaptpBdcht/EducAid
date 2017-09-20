@@ -1,0 +1,23 @@
+<p-growl [(value)]="msgs"></p-growl>
+
+<div class="ui-grid-row .my-picture">
+  <div class="ui-grid-col-4">
+    <fieldset>
+      <legend>Images disponibles</legend>
+      <p-galleria [images]="images" panelWidth="150" panelHeight="150" frameHeight="60" [autoPlay]="false" [showCaption]="false" (onImageClicked)="selectPicture($event)"></p-galleria>
+    </fieldset>
+  </div>
+  <div class="ui-grid-col-4">
+    <fieldset>
+      <legend>Mon image</legend>
+      <img [src]="currentPicture" width="150px" height="150px" />
+    </fieldset>
+  </div>
+  <div class="ui-grid-col-4">
+    <fieldset>
+      <legend>L'image que je veux</legend>
+      <img [src]="selectedPicture" width="150px" height="150px" />
+      <button pbutton type="button" (click)="updateKidPicture()" icon="fa-check">Je la prends !</button>
+    </fieldset>
+  </div>
+</div>

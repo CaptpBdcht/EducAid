@@ -1,0 +1,47 @@
+<div class="wrapper login-background"
+      style="background: url(assets/img/login-background.jpg) no-repeat center;background-size: cover;">
+  <div class="login-wrapper">
+    <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3">
+      <!--<div class="logo">
+        <img src="assets/img/educaid_logo_full.PNG" />
+      </div>-->
+      <div class="panel panel-default">
+        <div class="panel-heading login-heading">
+          EducAid
+        </div>
+        <div class="panel-body">
+          <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+            <div class="form-group">
+              <label for="username">Nom d'utilisateur</label>
+              <input type="text" class="form-control" id="username"
+                      required #username="ngModel"
+                      [(ngModel)]="model.username" name="username">
+              <div [hidden]="username.valid || username.pristine"
+                  class="alert alert-danger">
+                Le nom d'utilisateur est requis
+              </div>
+            </div> <!-- End Username -->
+
+            <div class="form-group">
+              <label for="password">Mot de passe</label>
+              <input type="password" class="form-control" id="password"
+                      required #password="ngModel"
+                      [(ngModel)]="model.password" name="password">
+              <div [hidden]="password.valid || password.pristine"
+                  class="alert alert-danger">
+                Le password est requis
+              </div>
+            </div> <!-- End Password -->
+
+            <div [hidden]="!errorMessage" class="login-error-msg">{{ errorMessage }}</div>
+
+            <button type="submit" class="btn btn-success" style="margin-top: 10px;"
+                    [disabled]="!userForm.form.valid">
+              Connexion
+            </button> <!-- End Submit -->
+          </form>
+        </div> <!-- End panel-body --> 
+      </div> <!-- End panel -->
+    </div>
+  </div> <!-- End login-wrapper -->
+</div>

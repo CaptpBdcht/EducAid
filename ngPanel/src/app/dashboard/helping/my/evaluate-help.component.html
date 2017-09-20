@@ -1,0 +1,16 @@
+<div *ngIf="demands">
+  <h4>J'évalue l'aide de...</h4>
+  <span *ngFor="let demand of demands; let index = index;">
+    <p-rating [(ngModel)]="evaluations[index]" [cancel]="false" style="float:left;"></p-rating>&nbsp;&nbsp;
+    {{ demand.firstname }} {{ demand.lastname }} sur l'exercice {{ demand.exerciceName }}
+    <br />
+  </span>
+  <br />
+  <button pButton type="button" (click)="saveRatings()"
+          class="ui-button-success" style="padding: 0.5em 1em;"
+          label="Enregistrer">
+  </button>
+</div>
+<div *ngIf="!demands">
+  <p-messages [(value)]="msgs"></p-messages>
+</div>

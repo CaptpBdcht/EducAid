@@ -1,0 +1,29 @@
+image: node:7
+
+stages:
+  - test
+  - production
+
+mocha:
+  stage: test
+  script:
+    - npm install
+    - npm test 
+
+jshint:
+  stage: test
+  script:
+    - npm install
+    - npm install -g jshint
+    - jshint ./express/
+
+deploy: 
+  stage: production
+  image : ruby:2.2
+  script:
+    - apt-get update -qy
+    - apt-get install -yqq ruby ruby-dev nodejs --silent
+    - gem install dpl
+    - dpl --provider=heroku --app=test-heroku-preprod --api- --api-key=$HEROKU_PRODUCTION_API_KEY
+  only:
+    - master

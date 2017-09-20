@@ -1,0 +1,44 @@
+{
+  "name": "educaid-nodeback",
+  "version": "1.0.0",
+  "description": "Providing REST API for EducAid project",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha",
+    "test:coverage": "nyc --reporter=html --reporter=text npm test > coverage.txt",
+    "test:clean": "rm -r coverage/ .nyc_output coverage.txt",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/EducAid/nodeBack.git"
+  },
+  "author": "EducAid Team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/EducAid/nodeBack/issues"
+  },
+  "homepage": "https://gitlab.com/EducAid/nodeBack#README",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.3",
+    "crypto": "0.0.3",
+    "delete-empty": "^1.0.1",
+    "express": "^4.15.3",
+    "express-validator": "^3.2.0",
+    "fs": "0.0.1-security",
+    "mkdirp": "^0.5.1",
+    "multer": "^1.3.0",
+    "mysql": "^2.13.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "jshint": "^2.9.5",
+    "mocha": "^3.4.1",
+    "morgan": "^1.8.2",
+    "nyc": "^11.0.3",
+    "sinon": "^2.2.0"
+  }
+}

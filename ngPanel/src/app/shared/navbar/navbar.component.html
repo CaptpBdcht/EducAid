@@ -1,0 +1,24 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#/dashboard/home">Bonjour {{ userFirstname }} !</a>
+    </div> 
+    <div class="collapse navbar-collapse">
+      <!--<ul class="nav navbar-nav navbar-left"></ul> -->
+      <ul class="nav navbar-nav navbar-right navbar-right-margin">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown">
+             Menu
+             <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li *ngIf="isMyPictureVisible"><a [routerLink]="['/dashboard/my-picture']">Mon Image</a></li>
+            <li *ngIf="isProfileVisible"><a [routerLink]="['/dashboard/profile']">Mon profil</a></li>
+            <li><a (click)="logout()">Déconnexion</a></li>
+          </ul>
+        </li>
+        <li class="separator hidden-lg hidden-md"></li>
+      </ul> <!-- end navbar-right -->
+    </div> <!-- end navbar-collapse -->
+  </div>
+</nav>

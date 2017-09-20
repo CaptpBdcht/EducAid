@@ -1,0 +1,22 @@
+{
+  // Enforcing options
+  "esversion": 6,
+  "eqeqeq": true,
+  "forin": true,
+  "maxdepth": 5,
+  "maxerr": 42,
+  "maxparams": 5,
+  "maxstatements": 20,
+  "noarg": true,
+  "nocomma": true,
+  "nonbsp": true,
+  "nonew": true,
+  "undef": true,
+  "varstmt": true,
+
+  // Relaxing options
+  "eqnull": true,
+
+  // Environments
+  "node": true
+}

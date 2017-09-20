@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <div class="sidebar">
+		<educaid-sidebar></educaid-sidebar>
+		<div class="sidebar-background" style="background-image: url(assets/img/sidebar-4.jpg)"></div>
+	</div>
+	<div class="main-panel">
+		<educaid-navbar></educaid-navbar>
+		<div class="main-content">
+			<p-growl [(value)]="msgs" [sticky]="true"></p-growl>
+			<router-outlet></router-outlet>
+		</div>
+		<educaid-footer></educaid-footer>
+	</div>
+</div>

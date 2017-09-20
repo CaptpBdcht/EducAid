@@ -1,0 +1,28 @@
+<p-tabView effect="fade" (onChange)="onTabChange($event)">
+  <p-tabPanel header="Public - Par Cours" leftIcon="fa-graduation-cap">
+    <p-autoComplete [(ngModel)]="searchText" [suggestions]="subjects" 
+        (completeMethod)="searchCourses($event)" delay="100" placeholder="chercher par sujet"
+        [minLength]="1" field="name" [size]="30" (onSelect)=loadDocuments($event)></p-autoComplete>
+    <br><br>
+    <p-orderList [value]="documents" filterBy="name" header={{subjectName}} [responsive]="true"
+        (onSelectionChange)=openDocument($event)>
+      <ng-template let-document pTemplate="item">
+        <div class="ui-helper-clearfix">
+          <img src="http://i.imgur.com/AbtIi0V.png" style="display:inline-block;margin:2px 0 2px 2px" width="32">
+          <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{document.name}}</div>
+        </div>
+      </ng-template>
+    </p-orderList>
+
+  </p-tabPanel>
+  <p-tabPanel header="Public - Non Classé" leftIcon="fa-list">
+    <p-orderList [value]="documents" filterBy="name" header="Documents libres" [responsive]="true" (onSelectionChange)=openDocument($event)>
+      <ng-template let-document pTemplate="item">
+        <div class="ui-helper-clearfix">
+          <img src="http://i.imgur.com/AbtIi0V.png" style="display:inline-block;margin:2px 0 2px 2px" width="32">
+          <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{document.name}}</div>
+        </div>
+      </ng-template>
+    </p-orderList>
+  </p-tabPanel>
+</p-tabView>

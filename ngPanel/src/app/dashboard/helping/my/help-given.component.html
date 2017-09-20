@@ -1,0 +1,13 @@
+<p-dataTable [value]="demands">
+    <p-column field="firstname" header="Prénom" [sortable]="true" [filter]="true" filterMatchMode="contains"></p-column>
+    <p-column field="lastname" header="Nom" [sortable]="true" [filter]="true" filterMatchMode="contains"></p-column>
+    <p-column field="exerciceName" header="Exercice" [sortable]="true" [filter]="true" filterMatchMode="contains"></p-column>
+    <p-column styleClass="col-button">
+        <ng-template pTemplate="header">
+            Evaluation
+        </ng-template>
+        <ng-template let-request="rowData" pTemplate="body">
+            <p-rating [(ngModel)]="request.helpful" [cancel]="false"></p-rating>
+        </ng-template>
+    </p-column>
+</p-dataTable>

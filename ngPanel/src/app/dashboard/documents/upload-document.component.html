@@ -1,0 +1,29 @@
+<h3>Mise en ligne de Documents</h3>
+<br />
+<p-messages [closable]="false" [(value)]="message"></p-messages>
+<p-dropdown [options]="classes" (onChange)=checkPublic($event) [(ngModel)]="selectedClass" placeholder="Classes"></p-dropdown>
+<br>
+<div *ngIf="selectedClass">
+  <div *ngIf="selectedClass != 'Non-classé'">
+    <br />
+    <p-autoComplete [(ngModel)]="searchCourseText" (onClear)=onClearCourse($event) [suggestions]="courses" 
+        (completeMethod)="searchCourses($event)" delay="100" placeholder="cours" [minLength]="1" field="subject" [size]="30" (onSelect)=onSelectCourse($event)></p-autoComplete>
+    <br />
+    <div *ngIf=selectedCourse>
+      <br />
+      Mettre en ligne publiquement:
+      <br />
+      <p-inputSwitch onLabel="Oui" (onChange)=checkPublic($event) offLabel="Non" [(ngModel)]="uploadPublicCourse"></p-inputSwitch>
+    </div>
+  </div>
+  <br>
+  <div *ngIf="selectedClass == 'Non-classé' || selectedCourse">
+    <p-fileUpload name="DocUpload[]" chooseLabel="Sélectionner" uploadLabel="Envoyer" cancelLabel="Annuler" customUpload="true" (uploadHandler)="uploadFiles($event)" (onUpload)="onUpload($event)" multiple="multiple" accept=".doc,.docx,.pdf,.zip,.rar,.txt" maxFileSize="10000000"> 
+      <ng-template pTemplate="content">
+        <ul *ngIf="uploadedFiles.length">
+          <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+        </ul>
+      </ng-template>        
+    </p-fileUpload>
+  </div>
+</div>

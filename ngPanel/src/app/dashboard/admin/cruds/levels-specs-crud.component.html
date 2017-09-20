@@ -1,0 +1,69 @@
+<div class="ui-grid-col-1">&nbsp;</div>
+<div class="ui-grid-col-4">
+    <!-- LEVELS -->
+    <p-dataTable [value]="levels" selectionMode="single" [(selection)]="selectedLevel"
+                (onRowSelect)="onRowLevelSelect($event)" [paginator]="true" rows="10"
+                [responsive]="true">
+        <p-header>Gestion des Niveaux</p-header>
+        <p-column field="name" header="Nom" [sortable]="true" [filter]="true" filterMatchMode="contains"></p-column>
+        <p-footer>
+            <div class="ui-helper-clearfix" style="width:100%">
+                <button type="button" pButton icon="fa-plus" class="crud-add-btn"
+                        (click)="showAddLevelDialog()"></button>
+            </div>
+        </p-footer>
+    </p-dataTable>
+    <p-dialog header="Détails du Niveau" [(visible)]="displayDialogLevel" [responsive]="true"
+            showEffect="fade" [modal]="true" appendTo="body">
+        <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="level">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-4"><label for="name" class="label-baseline-middle">Nom</label></div>
+                <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="level.name" /></div>
+            </div>
+        </div>
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button type="button" pButton icon="fa-trash" class="crud-dialog-delete"
+                        (click)="deleteLevel()" *ngIf="!newLevel"></button>
+                <button type="button" pButton icon="fa-check" class="crud-dialog-save"
+                        (click)="saveLevel()"></button>
+            </div>
+        </p-footer>
+    </p-dialog>
+    <!-- End Levels -->
+</div>
+<div class="ui-grid-col-2">&nbsp;</div>
+<div class="ui-grid-col-4">
+    <!-- SPECIALTIES -->
+    <p-dataTable [value]="specialties" selectionMode="single" [(selection)]="selectedSpecialty"
+                (onRowSelect)="onRowSpecialtySelect($event)" [paginator]="true" rows="10"
+                [responsive]="true">
+        <p-header>Gestion des Spécialités</p-header>
+        <p-column field="name" header="Nom" [sortable]="true" [filter]="true" filterMatchMode="contains"></p-column>
+        <p-footer>
+            <div class="ui-helper-clearfix" style="width:100%">
+                <button type="button" pButton icon="fa-plus" class="crud-add-btn"
+                        (click)="showAddSpecialtyDialog()"></button>
+            </div>
+        </p-footer>
+    </p-dataTable>
+    <p-dialog header="Details de la Spécialité" [(visible)]="displayDialogSpecialty" [responsive]="true"
+            showEffect="fade" [modal]="true" appendTo="body">
+        <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="specialty">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-4"><label for="name" class="label-baseline-middle">Nom</label></div>
+                <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="specialty.name" /></div>
+            </div>
+        </div>
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button type="button" pButton icon="fa-trash" class="crud-dialog-delete"
+                        (click)="deleteSpecialty()" *ngIf="!newSpecialty"></button>
+                <button type="button" pButton icon="fa-check" class="crud-dialog-save"
+                        (click)="saveSpecialty()"></button>
+            </div>
+        </p-footer>
+    </p-dialog>
+    <!-- End Specialties -->
+</div>
+<div class="ui-grid-col-1">&nbsp;</div>

@@ -1,0 +1,14 @@
+### Node ###
+node_modules/
+uploads/
+typings/
+
+### Visual Studio ###
+*.sln
+*.njsproj
+.vs/
+bin/
+obj/
+
+### Visual Studio Code ###
+.vscode/

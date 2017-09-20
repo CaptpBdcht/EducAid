@@ -1,0 +1,14 @@
+<p-dataTable [value]="classes">
+    <p-column field="level" header="Niveau" [sortable]="true" [filter]="true" filterMatchMode="contains"></p-column>
+    <p-column field="specialty" header="Spécialité" [sortable]="true" [filter]="true" filterMatchMode="contains"></p-column>
+    <p-column field="year" header="Année" [sortable]="true" [filter]="true" filterMatchMode="contains"></p-column>
+    <p-column styleClass="col-button">
+        <ng-template pTemplate="header">
+            Assigner étudiants
+        </ng-template>
+        <ng-template let-clazz="rowData" pTemplate="body">
+            <button type="button" pButton class="btn-list-search"
+                    (click)="selectClass(clazz)" icon="fa-arrows-h"></button>
+        </ng-template>
+    </p-column>
+</p-dataTable>

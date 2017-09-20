@@ -1,0 +1,96 @@
+<div *ngIf="user">
+    <p-growl [(value)]="msgs"></p-growl>
+
+    <div class="row avatar">
+      <div class="col-md-12">
+        <fieldset>
+          <legend>Avatar</legend>
+          <img [src]="avatarSrc" width="150px" height="150px" />
+          <p-fileUpload mode="basic" customUpload="true" name="demo[]" accept="image/*" maxFileSize="1000000" (onSelect)="onSelect($event)" (uploadHandler)="uploadHandler($event)" (onUpload)="onUpload($event)"></p-fileUpload>
+          
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row profile">
+
+        <div class="col-md-6">
+            <fieldset>
+                <legend>Personal Informations</legend>
+                <form (ngSubmit)="saveInformations()" #userForm="ngForm">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" required
+                            #username="ngModel" [(ngModel)]="user.username" name="username">
+                        <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+                            Username is required
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="firstname">Firstname</label>
+                        <input type="text" class="form-control" id="firstname" required
+                            #firstname="ngModel" [(ngModel)]="user.firstname" name="firstname">
+                        <div [hidden]="firstname.valid || firstname.pristine" class="alert alert-danger">
+                            Firstname is required
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastname">Lastname</label>
+                        <input type="text" class="form-control" id="lastname" required
+                            #lastname="ngModel" [(ngModel)]="user.lastname" name="lastname">
+                        <div [hidden]="lastname.valid || lastname.pristine" class="alert alert-danger">
+                            Lastname is required
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-success">
+                            Save
+                        </button>
+                        <button (click)="ngOnInit()" type="button" class="btn">
+                            Reset
+                        </button>
+                    </div>
+                </form>
+            </fieldset>
+        </div>
+
+        <div class="col-md-6">
+            <fieldset>
+                <legend>Manage Password</legend>
+                <form (ngSubmit)="updatePassword()" #passwordForm="ngForm" autocomplete="off">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" required
+                            #password="ngModel" [(ngModel)]="newPassword" name="password">
+                        <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                            Password is required
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passwordConfirmation">Password Confirmation</label>
+                        <input type="password" class="form-control" id="passwordConfirmation" required 
+                            #passwordConfirmation="ngModel" [(ngModel)]="newPasswordConfirm" name="passwordConfirmation">
+                        <div [hidden]="passwordConfirmation.valid || passwordConfirmation.pristine" class="alert alert-danger">
+                            Password confirmation is required
+                        </div>
+                        <div [hidden]="passwordConfirmation.value == '' || passwordConfirmation.value == password.value"
+                            class="alert alert-danger">
+                            The password confirmation must be the same as the password entered
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" [disabled]="!passwordForm.form.valid || passwordConfirmation.value != password.value" class="btn btn-primary">
+                            Change
+                        </button>
+                    </div>
+                </form>
+            </fieldset>
+        </div>
+
+    </div>
+</div>

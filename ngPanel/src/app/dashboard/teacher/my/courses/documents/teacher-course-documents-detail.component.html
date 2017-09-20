@@ -1,0 +1,17 @@
+<p-dataTable [value]="documents" selectionMode="single"
+             [paginator]="true" rows="10" [responsive]="true">
+    <p-header>{{ courseName }}</p-header>
+    <p-column field="name" header="Nom" [sortable]="true"
+             [filter]="true" filterMatchMode="contains"></p-column>
+    <p-column field="subject" header="Sujet" [sortable]="true"
+             [filter]="true" filterMatchMode="contains"></p-column>
+    <p-column styleClass="col-button" [style]="{'width':'15%'}">
+        <ng-template pTemplate="header">
+            Supprimer
+        </ng-template>
+        <ng-template let-document="rowData" pTemplate="body">
+            <button type="button" pButton class="btn-list-search"
+                    (click)="deleteDocument(document)" icon="fa-trash"></button>
+        </ng-template>
+    </p-column>
+</p-dataTable>

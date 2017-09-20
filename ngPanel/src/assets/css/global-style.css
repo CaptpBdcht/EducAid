@@ -1,0 +1,129 @@
+/*
+ * Application statics
+ */
+:root {
+  /*  */
+  --valid-color: #42A948;
+  --invalid-color: #a94442;
+  
+  /* Theme */
+  --blue-theme: #677de8;
+  --purple-theme: #705cb2;
+  --indigo-theme: #6b82bb;
+  --sky-theme: #a0ddff;
+  --grey-sky-theme: #c6d2fe;
+  --darker-theme: #042740;
+
+  --normal-radius: 4px;
+}
+
+h3 {
+   margin-left: 20px;
+}
+
+/*
+ * PrimeNG theme updates
+ */
+.ui-widget-header {
+  background: var(--blue-theme);
+  border: 1px solid var(--darker-theme);
+}
+.ui-rowgroup-header {
+  border: 1px solid var(--blue-theme);
+}
+.ui-datatable .ui-datatable-header {
+  border-top-left-radius: var(--normal-radius);
+  border-top-right-radius: var(--normal-radius);
+  border-bottom: 1px solid black;
+	font-size: large; /* large header font */
+}
+.ui-datatable .ui-datatable-footer {
+  border-bottom-left-radius: var(--normal-radius);
+  border-bottom-right-radius: var(--normal-radius);
+}
+.ui-datatable .ui-paginator-bottom {
+  border-top-width: 1px;
+}
+.ui-datatable .ui-datatable-data>tr>td { word-wrap: break-word; } /* Wrap if string overflows */
+.ui-dialog .ui-dialog-buttonpane button { margin: 0 0 0 0 !important; } /* No margin on dialog button pane */
+.ui-helper-clearfix { width: 100% !important; } /* Make dropdown full width */
+.ui-grid>.ui-grid-row { padding-bottom: 5px; } /* Grid rox spacing */
+.ui-state-focus { color: #e17009 !important; background: #fcfdfd !important; } /* Keep selected color on focus */
+
+/**
+ * Form validation style
+ */
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid var(--valid-color); /* green */
+}
+.ng-invalid:not(form)  {
+  border-left: 5px solid var(--invalid-color); /* red */
+}
+
+/**
+ * My Picture
+ */
+ .ui-galleria img {
+  cursor: pointer;
+}
+
+.my-picture legend {
+  margin: auto;
+}
+
+/**
+ * Profile
+ */
+.avatar {
+  padding: 5vh 10vh 5vh 10vh;
+}
+
+.profile {
+  padding: 0vh 10vh 10vh 10vh;
+}
+
+.avatar .col-md-12 {
+  padding: 0vh 10vh 0vh 10vh;
+}
+
+.profile .col-md-6 {
+  padding: 0vh 10vh 0vh 10vh;
+}
+
+/**
+ * Sidebar & Navbar
+ */
+.sidebar-li-margin {
+  margin-top: 4px;
+}
+.sidebar-ul-pretty {
+  list-style: none;
+  margin-right: 10px;
+}
+
+.navbar-right-margin {
+  margin: 10px 0px 0px 0px !important;
+}
+
+/**
+ * Admin
+ */
+.crud-dialog-save {
+  float: left !important;
+  width: 40%;
+}
+.crud-dialog-delete {
+  width: 40%;
+}
+.crud-add-btn {
+  width: 50%;
+}
+.btn-list-search {
+  width: 100%;
+}
+
+.label-baseline-middle {
+  vertical-align: sub !important;
+}
+
+

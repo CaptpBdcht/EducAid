@@ -1,0 +1,112 @@
+<p-growl [(value)]="msgs"></p-growl>
+<h4>Titre du QCM</h4>
+<input pInputText id="title" [(ngModel)]="qcm.title" />
+<br /><br />
+<span *ngFor="let quest of questions">
+  <educaid-qcm-question [question]="quest"></educaid-qcm-question>
+</span>
+<button pButton type="button" (click)="showAddQuestionDialog()"
+        class="ui-button-primary" label="Ajouter question">
+</button>
+<button pButton type="button" (click)="showSaveQCMDialog()"
+        class="ui-button-success" style="float:right;" label="Enregistrer">
+</button>
+
+<p-dialog header="Nouvelle question" [(visible)]="displayDialog" [responsive]="true"
+          showEffect="fade" [modal]="true" appendTo="body">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="question">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+                <label for="question" class="label-baseline-middle">Question</label>
+            </div>
+            <div class="ui-grid-col-8"><input pInputText id="question" [(ngModel)]="question.question" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+                <label for="answer1"  class="label-baseline-middle">Choix 1</label>
+            </div>
+            <div class="ui-grid-col-8"><input pInputText id="answer1" [(ngModel)]="question.answer1" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+                <label for="answer2"  class="label-baseline-middle">Choix 2</label>
+            </div>
+            <div class="ui-grid-col-8"><input pInputText id="answer2" [(ngModel)]="question.answer2" /></div>
+        </div>
+        <div class="ui-grid-row" *ngIf="answerNeeded > 2">
+            <div class="ui-grid-col-4">
+                <label for="answer3"  class="label-baseline-middle">Choix 3</label>
+            </div>
+            <div class="ui-grid-col-8"><input pInputText id="answer3" [(ngModel)]="question.answer3" /></div>
+        </div>
+        <div class="ui-grid-row" *ngIf="answerNeeded > 3">
+            <div class="ui-grid-col-4">
+                <label for="answer4"  class="label-baseline-middle">Choix 4</label>
+            </div>
+            <div class="ui-grid-col-8"><input pInputText id="answer4" [(ngModel)]="question.answer4" /></div>
+        </div>
+        <div class="ui-grid-row" *ngIf="answerNeeded > 4">
+            <div class="ui-grid-col-4">
+                <label for="answer5"  class="label-baseline-middle">Choix 5</label>
+            </div>
+            <div class="ui-grid-col-8"><input pInputText id="answer5" [(ngModel)]="question.answer5" /></div>
+        </div>
+        <div class="ui-grid-row" *ngIf="!answerMax">
+            <div class="ui-grid-col-4">
+                <label for="addingQuestion"  class="label-baseline-middle">Ajouter</label>
+            </div>
+            <div class="ui-grid-col-8">
+                <button type="button" pButton  style="width:100%;"
+                    icon="fa-plus" (click)="addNeeded()"></button>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+                <label for="answer_nb"  class="label-baseline-middle">N° réponse</label>
+            </div>
+            <div class="ui-grid-col-8">
+                <p-dropdown [options]="answers" [(ngModel)]="question.answerNb"
+                            placeholder="Select the Answer"></p-dropdown>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="error" style="color:red; font-weight:bold">{{ errMsg }}</div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton  style="width:100%;"
+                    icon="fa-check" (click)="add()"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="Save QCM" [(visible)]="displayDialogSave" [responsive]="true"
+          showEffect="fade" [modal]="true" appendTo="body">
+    <div class="ui-grid ui-grid-responsive ui-fluid" style="width:40vw; height:30vh; padding-right: 10px;" *ngIf="qcm">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+                <label for="name" class="label-baseline-middle">Exercice name</label>
+            </div>
+            <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="qcm.name" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+                <label for="subjectName" class="label-baseline-middle">Sujet</label>
+            </div>
+            <div class="ui-grid-col-8">
+                <p-dropdown [options]="subjects" [(ngModel)]="qcm.subjectId" placeholder="Sélection sujet"></p-dropdown>
+            </div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="level" class="label-baseline-middle">Niveau</label></div>
+            <div class="ui-grid-col-8">
+                <p-dropdown [options]="levels" [(ngModel)]="qcm.levelId" placeholder="Sélection niveau"></p-dropdown>
+            </div>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton style="width:100%;"
+                    icon="fa-check" (click)="save()"></button>
+        </div>
+    </p-footer>
+</p-dialog>

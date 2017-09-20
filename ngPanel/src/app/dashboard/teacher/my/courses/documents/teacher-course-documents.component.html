@@ -1,0 +1,24 @@
+<div class="ui-grid-col-12" style="text-align:center; font-size:x-large; font-weight:600;">
+    {{ courseName }}
+</div>
+<br /><br />
+<p-pickList [source]="sourceDocuments" [target]="targetDocuments"
+        sourceHeader="Disponible" targetHeader="Sélection" [responsive]="true" filterBy="brand" 
+        dragdrop="true" filterBy="name" sourceFilterPlaceholder="Recherche par nom"
+        targetFilterPlaceholder="Recherche par nom"
+        [sourceStyle]="{'height':'300px'}" [targetStyle]="{'height':'300px'}">
+    <ng-template let-document pTemplate="item">
+        <div class="ui-helper-clearfix">
+            <div style="font-size:14px;float:right;margin:5px 10px 5px 0">
+               {{ document.name }}  {{ document.subject }} 
+            </div>
+        </div>
+    </ng-template>
+</p-pickList>
+<br />
+<div class="ui-grid-col-12" style="text-align:center;">
+    <button pButton type="button" (click)="saveExercices()"
+            class="ui-button-success" style="padding: 0.5em 1em;"
+            label="Sauver en l'état">
+    </button>
+</div>
